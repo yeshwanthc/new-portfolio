@@ -16,15 +16,15 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   const socialLinks = [
     {
       icon: <Linkedin className="w-5 h-5" />,
-      href: "https://linkedin.com/in/yourprofile",
+      href: "https://www.linkedin.com/in/yeshwanth-c-a89a3826a/",
     },
     {
       icon: <Github className="w-5 h-5" />,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/yeshwanthc",
     },
     {
       icon: <Twitter className="w-5 h-5" />,
-      href: "https://twitter.com/yourhandle",
+      href: "https://x.com/Yeshwanth1823",
     },
   ];
 
