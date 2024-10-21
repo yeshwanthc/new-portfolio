@@ -7,8 +7,6 @@ const Roboto = localFont({
   weight: "100 900",
 });
 
-
-
 export default function RootLayout({
   children,
 }: {
@@ -16,11 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
-    <title>Yeshwanth | Front End Developer</title>
-      <body className={`${Roboto.variable} antialiased`}>
-        {children}
-      </body>
+      <head>
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
+        <title>Yeshwanth | Front End Developer</title>
+        <meta name="google-adsense-account" content="ca-pub-5761377407460431" />
+      </head>
+
+      <body className={`${Roboto.variable} antialiased`}>{children}</body>
     </html>
   );
 }
