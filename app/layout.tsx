@@ -3,8 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
-import {  ScrollTrigger } from "gsap/all";
-import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
+import {  ScrollTrigger,ScrollSmoother } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 
 // Load Roboto font
