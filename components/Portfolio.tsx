@@ -58,7 +58,7 @@ export default function EnhancedPortfolio() {
         }}
       />
       <div className="container-main mx-auto px-4 py-16 relative z-10">
-        <header className="flex flex-col md:flex-row items-center justify-between mb-16">
+        <main className="flex flex-col py-8 md:flex-row items-center justify-between mb-16">
           <div>
             <h1
               className={`text-4xl font-bold mb-2 ${
@@ -108,21 +108,22 @@ export default function EnhancedPortfolio() {
                   <span className="sr-only">LinkedIn</span>
                 </Button>
               </Link>
-           
-                <Button
-                  variant="outline"
-                  onClick={() => window.location.href = "mailto:yeshwanthnaidu62@gmail.com"}
-                  size="icon"
-                  className={
-                    isDarkMode
-                      ? "text-gray-400 hover:text-gray-900 hover:border-white"
-                      : "text-gray-600 hover:text-gray-900 hover:border-gray-900"
-                  }
-                >
-                  <Mail className="h-5 w-5" />
-                  <span className="sr-only">Email</span>
-                </Button>
-             
+
+              <Button
+                variant="outline"
+                onClick={() =>
+                  (window.location.href = "mailto:yeshwanthnaidu62@gmail.com")
+                }
+                size="icon"
+                className={
+                  isDarkMode
+                    ? "text-gray-400 hover:text-gray-900 hover:border-white"
+                    : "text-gray-600 hover:text-gray-900 hover:border-gray-900"
+                }
+              >
+                <Mail className="h-5 w-5" />
+                <span className="sr-only">Email</span>
+              </Button>
             </div>
           </div>
           <div className="mt-6 md:mt-0 flex items-center space-x-4">
@@ -151,54 +152,8 @@ export default function EnhancedPortfolio() {
               <Sun className={`h-5 w-5 ${isDarkMode ? 'text-gray-600' : 'text-yellow-500'}`} />
             </div> */}
           </div>
-        </header>
+        </main>
 
-        <nav className="mb-16">
-          <ul className="flex flex-wrap justify-center space-x-4">
-            <li>
-              <Link href="#skills">
-                <Button
-                  variant="ghost"
-                  className={
-                    isDarkMode
-                      ? "text-gray-400 hover:text-gray-900"
-                      : "text-gray-600 hover:text-gray-900"
-                  }
-                >
-                  <Code className="mr-2 h-4 w-4" /> Skills
-                </Button>
-              </Link>
-            </li>
-            <li>
-              <Link href="#projects">
-                <Button
-                  variant="ghost"
-                  className={
-                    isDarkMode
-                      ? "text-gray-400 hover:text-gray-900"
-                      : "text-gray-600 hover:text-gray-900"
-                  }
-                >
-                  <Briefcase className="mr-2 h-4 w-4" /> Projects
-                </Button>
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" scroll={false} onClick={handleScroll}>
-                <Button
-                  variant="ghost"
-                  className={
-                    isDarkMode
-                      ? "text-gray-400 hover:text-gray-900"
-                      : "text-gray-600 hover:text-gray-900"
-                  }
-                >
-                  <Mail className="mr-2 h-4 w-4" /> Contact
-                </Button>
-              </Link>
-            </li>
-          </ul>
-        </nav>
         <Projects isDarkMode={isDarkMode} />
         <Skills isDarkMode={isDarkMode} />
 
