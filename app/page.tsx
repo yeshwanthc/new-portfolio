@@ -1,12 +1,14 @@
 "use client";
 
-import EnhancedPortfolio from "@/components/Portfolio";
 import React from "react";
+import EnhancedPortfolio from "@/components/Portfolio";
+
+import { ReactLenis } from '@studio-freight/react-lenis';
 
 export default function Home() {
   return (
-    <div>
+    <ReactLenis root>
       <EnhancedPortfolio />
-    </div>
+    </ReactLenis>
   );
 }
