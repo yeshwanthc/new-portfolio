@@ -71,7 +71,7 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
         }
       );
 
-      console.log("EmailJS result:", result); // Debug log
+      console.log("EmailJS result:", result); 
 
       if (result.text === "OK") {
         setIsSent(true);
@@ -86,7 +86,7 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
         throw new Error(`Failed to send email: ${result.text}`);
       }
     } catch (error) {
-      console.error("EmailJS error:", error); // Debug log
+      console.error("EmailJS error:", error); 
       let errorMessage = "Failed to send your message. Please try again later.";
       
       if (error instanceof Error) {

@@ -76,7 +76,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                       isDarkMode ? "text-slate-300" : "text-slate-700"
                     }`}
                   >
-                    yeshwanth3708@gmail.com
+                    yeshwanthnaidu62@gmail.com
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
