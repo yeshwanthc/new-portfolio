@@ -29,6 +29,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <title>Yeshwanth | Front End Developer</title>
+        <meta name="description" content="Yeshwanth's portfolio showcasing front-end development projects and skills." />
+        <meta name="keywords" content="Yeshwanth, Front End Developer, Portfolio, Web Development, JavaScript, React, Next.js, UI/UX Design, Responsive Design, HTML, CSS, Web Applications, Software Development" />
+        <meta name="author" content="Yeshwanth" />
       </head>
       <body className={`${Roboto.variable} antialiased`}>
         <div id="smooth-wrapper">
