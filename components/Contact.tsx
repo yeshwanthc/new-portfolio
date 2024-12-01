@@ -33,7 +33,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   return (
     <section
     id="contact"
-      className={`rounded-lg p-8 ${
+      className={`rounded-lg py-8 px-6 ${
         isDarkMode ? "bg-slate-800" : "bg-white shadow-lg"
       }`}
     >
