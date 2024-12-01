@@ -72,11 +72,11 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     }`}
                   />
                   <span
-                    className={`${
+                    className={` "overflow-y-hidden" ${
                       isDarkMode ? "text-slate-300" : "text-slate-700"
                     }`}
                   >
-                    yeshwanthnaidu62@gmail.com
+                    yeshwanth3708@gmail.com
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
