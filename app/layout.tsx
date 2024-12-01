@@ -16,9 +16,7 @@ export default function RootLayout({
 }) {
   useEffect(() => {
     const handleScroll = () => {
-      // Example: Logging scroll position (for debugging or future enhancements)
       const scrollPosition = window.scrollY;
-      console.log("Scroll position:", scrollPosition);
     };
 
     window.addEventListener("scroll", handleScroll);
