@@ -1,6 +1,5 @@
 "use client";
 import localFont from "next/font/local";
-import { useEffect } from "react";
 import "./globals.css";
 
 const Roboto = localFont({
@@ -14,16 +13,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <html lang="en">
