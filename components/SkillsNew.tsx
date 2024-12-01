@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, Code, Palette, Database } from "lucide-react"
+import { Briefcase, Code, Palette, Database } from 'lucide-react'
 
 interface SkillsProps {
   isDarkMode?: boolean
@@ -22,8 +22,6 @@ const skillCategories = [
       "React",
       "Next.js",
       "TypeScript",
-      "Responsive Design",
-      "Jest",
     ],
   },
   {
@@ -34,7 +32,6 @@ const skillCategories = [
       "Tailwind CSS",
       "Bootstrap",
       "Material-UI",
-      "Styled Components",
     ],
   },
   {
@@ -93,9 +90,9 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
               ))}
             </TabsList>
             <div className="p-6">
-              <AnimatePresence mode="wait">
-                {skillCategories.map((category) => (
-                  <TabsContent key={category.name} value={category.name}>
+              {skillCategories.map((category) => (
+                <TabsContent key={category.name} value={category.name}>
+                  {activeTab === category.name && (
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -123,9 +120,9 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                         </motion.div>
                       ))}
                     </motion.div>
-                  </TabsContent>
-                ))}
-              </AnimatePresence>
+                  )}
+                </TabsContent>
+              ))}
             </div>
           </Tabs>
         </CardContent>
