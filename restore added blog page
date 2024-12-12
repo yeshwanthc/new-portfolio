@@ -1,0 +1,23 @@
+[33meb58592[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33me1a09cb[m HEAD@{1}: commit: added blog page
+[33meb58592[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{2}: commit: AnimatePresence issue resolved
+[33mde1934d[m HEAD@{3}: commit: removed unwanted useeffect
+[33m0aad293[m HEAD@{4}: commit: minor fix
+[33m9f36317[m HEAD@{5}: commit: removed unwanted console statement
+[33m7d40d6d[m HEAD@{6}: commit: mail allignment fix in mobile
+[33m76c7413[m HEAD@{7}: commit: skills ui update
+[33m5964663[m HEAD@{8}: commit: content
+[33m12dab7f[m HEAD@{9}: commit: content
+[33mc4a9579[m HEAD@{10}: commit: mail change
+[33m73d51aa[m HEAD@{11}: commit: smooth scroll
+[33mc52e6b6[m HEAD@{12}: commit: minor fix
+[33m18c59c8[m HEAD@{13}: commit: added smooth scroll
+[33m5758299[m HEAD@{14}: commit: added smooth scroll
+[33maa3cbd5[m HEAD@{15}: commit: minor
+[33mb7f1a2e[m HEAD@{16}: commit: head
+[33m2e76336[m HEAD@{17}: commit: social
+[33m9fe9d50[m HEAD@{18}: commit: dep fix
+[33m21df004[m HEAD@{19}: commit: bun fix
+[33m8eda153[m HEAD@{20}: commit: bun fix
+[33m4c84c8e[m HEAD@{21}: Branch: renamed refs/heads/main to refs/heads/main
+[33m4c84c8e[m HEAD@{23}: commit (initial): first commit

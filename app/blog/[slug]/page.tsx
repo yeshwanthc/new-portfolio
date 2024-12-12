@@ -37,8 +37,8 @@ const blogPosts: Post[] = [
       <h2>Conclusion</h2>
       <p>The future of web development looks exciting, with new technologies and methodologies emerging to make the web faster, more accessible, and more powerful. As developers, it's crucial to stay informed about these trends and continuously update our skills to keep up with the evolving landscape of web development.</p>
     `,
-    date: "2023-12-01",
-    author: "Your Name",
+    date: "2024-12-01",
+    author: "Yeshwanth",
     slug: "future-of-web-development-2024",
   },
 ]
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   return {
-    title: `${post.title} | Your Name's Blog`,
+    title: `${post.title} | Yeshwanth's Blog`,
     description: post.content.substring(0, 160),
   }
 }
