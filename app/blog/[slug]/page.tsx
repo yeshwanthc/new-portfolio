@@ -74,7 +74,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         </Button>
         <h1 className="text-4xl font-bold mb-4 text-slate-100">{post.title}</h1>
         <p className="text-sm text-slate-400 mb-8">
-          {post.author} • {new Date(post.date).toLocaleDateString()}
+          {post.author} 
         </p>
         <div 
           className="prose prose-invert max-w-none"
