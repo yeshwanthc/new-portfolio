@@ -15,7 +15,7 @@ interface Post {
 const blogPosts: Post[] = [
   {
     id: 1,
-    title: "The Future of Web Development: What to Expect in 2024",
+    title: "The Future of Web Development: What to Expect in 2025",
     content: `
       <p>As we approach 2024, the world of web development continues to evolve at a rapid pace. In this article, we'll explore some of the key trends and technologies that are likely to shape the landscape of web development in the coming year.</p>
 
@@ -37,9 +37,9 @@ const blogPosts: Post[] = [
       <h2>Conclusion</h2>
       <p>The future of web development looks exciting, with new technologies and methodologies emerging to make the web faster, more accessible, and more powerful. As developers, it's crucial to stay informed about these trends and continuously update our skills to keep up with the evolving landscape of web development.</p>
     `,
-    date: "2024-12-01",
+    date: "2024-12-16",
     author: "Yeshwanth",
-    slug: "future-of-web-development-2024",
+    slug: "future-of-web-development-2025",
   },
 ]
 
