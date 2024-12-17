@@ -12,7 +12,7 @@ const blogPosts = [
     id: 1,
     title: 'The Future of Web Development: What to Expect in 2024',
     excerpt: 'Explore the upcoming trends and technologies that will shape the web development landscape in 2024.',
-    date: '2024-12-01',
+    date: '2024-12-17',
     author: 'Yeshwanth',
     slug: 'future-of-web-development-2024',
     content: `
@@ -41,7 +41,7 @@ const blogPosts = [
     id: 2,
     title: 'Mastering React Hooks: A Comprehensive Guide',
     excerpt: 'Dive deep into React Hooks and learn how to use them effectively in your projects.',
-    date: '2024-11-15',
+    date: '2024-12-17',
     author: 'Yeshwanth',
     slug: 'mastering-react-hooks',
     content: `
@@ -68,7 +68,7 @@ const blogPosts = [
     id: 3,
     title: 'Building Accessible Web Applications: Best Practices',
     excerpt: 'Learn how to create web applications that are accessible to all users, regardless of their abilities.',
-    date: '2024-10-30',
+    date: '2024-12-17',
     author: 'Yeshwanth',
     slug: 'building-accessible-web-applications',
     content: `
@@ -96,7 +96,7 @@ const blogPosts = [
     id: 4,
     title: 'The Power of Server-Side Rendering with Next.js',
     excerpt: 'Discover how Server-Side Rendering can improve your web application\'s performance and SEO.',
-    date: '2024-10-15',
+    date: '2024-12-17',
     author: 'Yeshwanth',
     slug: 'power-of-server-side-rendering-nextjs',
     content: `
