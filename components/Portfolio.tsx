@@ -10,6 +10,7 @@ import Skills from "./SkillsNew";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Link from "next/link";
+import { FloatingIcons } from "./FloatingIcons";
 
 export default function EnhancedPortfolio() {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
@@ -27,8 +28,6 @@ export default function EnhancedPortfolio() {
     };
   }, []);
 
- 
-
   return (
     <div
       className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${
@@ -37,6 +36,7 @@ export default function EnhancedPortfolio() {
           : "bg-slate-300 text-slate-950"
       }`}
     >
+      <FloatingIcons />
       <div
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
         style={{
@@ -98,12 +98,12 @@ export default function EnhancedPortfolio() {
                   <span className="sr-only">LinkedIn</span>
                 </Button>
               </Link>
-
+              <Link
+                href="mailto:yeshwanthnaidu62@gmail.com"
+            
+              >
               <Button
                 variant="outline"
-                onClick={() =>
-                  (window.location.href = "mailto:yeshwanthnaidu62@gmail.com")
-                }
                 size="icon"
                 className={
                   isDarkMode
@@ -114,6 +114,7 @@ export default function EnhancedPortfolio() {
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </Button>
+              </Link>
             </div>
           </div>
           <div className="mt-6 md:mt-0 flex items-center space-x-4">
