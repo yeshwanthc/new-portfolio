@@ -10,10 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import Furnitt from "../app/images/furnittmain.png";
+import SignatureHub from "../app/images/esgenerator.png";
 import DAT from "../app/images/Dutch Aviation Trainers.png";
 import RBD from "../app/images/React Dashboard.png";
-import UMAACS from "../app/images/Umaa Consultancy.png";
+import WebScrapper from "../app/images/webscrapper.png";
 import EZEE from "../app/images/e-zee.png";
 import Unilet from "../app/images/Unilet.png";
 
@@ -24,11 +24,11 @@ interface ProjectProps {
 const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
   const projects = [
     {
-      title: "Furnitt",
-      description: "A furniture store based in Bangalore, offering modern and stylish furniture solutions for homes and offices. Furnitt specializes in creating customized furniture pieces that blend aesthetics with functionality.",
-      image: Furnitt,
-      link: "https://furnitt.in", 
-      tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+      title: "Email Signature Generator",
+      description: "Craft personalized email signatures effortlessly with 40 unique styles. Enhance professionalism, improve communication, and make lasting impressions with customizable designs tailored for any industry.",
+      image: SignatureHub,
+      link: "https://esgenerator.netlify.app", 
+      tags: ["React.js", "Tailwind CSS", "TypeScript"],
     },
     {
       title: "E-Zee",
@@ -38,11 +38,11 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
     },
     {
-      title: "UMAACS",
-      description: "ERP solutions, Oracle Cloud HCM, and IT consulting services.",
-      image: UMAACS, 
-      link: "https://umaacs.com", 
-      tags: ["React", "Next.js", "Bootstrap"],
+      title: "Web Scrapper",
+      description: "Efficiently scrape web data using Cheerio and securely store results in Supabase. Includes user authentication, database management, and seamless data handling for automated web extraction.",
+      image: WebScrapper, 
+      link: "https://github.com/yeshwanthc/web-scrapper", 
+      tags: [ "Next.js", "TypeScript","Supabase"],
     },
     {
       title: "React Dashboard",
