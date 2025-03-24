@@ -15,7 +15,7 @@ import DAT from "../app/images/Dutch Aviation Trainers.png";
 import RBD from "../app/images/React Dashboard.png";
 import WebScrapper from "../app/images/webscrapper.png";
 import EZEE from "../app/images/e-zee.png";
-import Unilet from "../app/images/Unilet.png";
+import LumereSpaces from "../app/images/lumerespaces.png";
 
 interface ProjectProps {
   isDarkMode: boolean;
@@ -31,13 +31,6 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       tags: ["React.js", "Tailwind CSS", "TypeScript"],
     },
     {
-      title: "E-Zee",
-      description: "A platform showcasing electric bicycles developed by the brand. E-Zee provides detailed specifications, pricing, and performance insights for each electric cycle, helping users make informed choices.",
-      image: EZEE, 
-      link: "https://www.e-zee.in", 
-      tags: ["HTML", "CSS", "JavaScript", "WordPress"],
-    },
-    {
       title: "Web Scrapper",
       description: "Efficiently scrape web data using Cheerio and securely store results in Supabase. Includes user authentication, database management, and seamless data handling for automated web extraction.",
       image: WebScrapper, 
@@ -45,11 +38,26 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       tags: [ "Next.js", "TypeScript","Supabase"],
     },
     {
+      title: "Lumière Spaces",
+      description: "Designed and developed a sleek, responsive landing page for Lumière Spaces using modern technologies. Ensured fast load times, seamless navigation, and a visually appealing interface to showcase luxury interior designs.",
+      image: LumereSpaces, 
+      link: "https://lumierespaces.netlify.app", 
+      tags: ["React.js",  "TypeScript", "Tailwind CSS"],
+    },
+    {
+      title: "E-Zee",
+      description: "A platform showcasing electric bicycles developed by the brand. E-Zee provides detailed specifications, pricing, and performance insights for each electric cycle, helping users make informed choices.",
+      image: EZEE, 
+      link: "https://www.e-zee.in", 
+      tags: ["HTML", "CSS", "JavaScript", "WordPress"],
+    },
+   
+    {
       title: "React Dashboard",
       description: "A functional dashboard to track product sales, website visits, and more.",
       image: RBD, 
       link: "https://reactdashboard14.netlify.app/", 
-      tags: ["React JS", "Material UI", "TypeScript"],
+      tags: ["React.js", "Material UI", "TypeScript"],
     },
     {
       title: "Dutch Aviation Trainers",
@@ -58,13 +66,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       link: "https://dutchaviationtrainers.com", 
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
     },
-    {
-      title: "Unilet Stores",
-      description: "A retail store for consumer electronics and home appliances.",
-      image: Unilet, 
-      link: "https://uniletstores.com", 
-      tags: ["HTML", "CSS", "JavaScript", "WordPress", "WooCommerce"],
-    },
+   
   ];
 
   return (
