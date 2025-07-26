@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, Code, Palette, Database } from 'lucide-react'
+import { Code, Palette, Database, Zap } from 'lucide-react'
 
 interface SkillsProps {
   isDarkMode?: boolean
@@ -15,37 +15,40 @@ const skillCategories = [
   {
     name: "Frontend",
     icon: <Code className="w-5 h-5" />,
+    color: "from-blue-500 to-cyan-500",
     skills: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React",
-      "Next.js",
-      "TypeScript",
+      { name: "HTML5", level: 95 },
+      { name: "CSS3", level: 90 },
+      { name: "JavaScript", level: 88 },
+      { name: "React", level: 85 },
+      { name: "Next.js", level: 82 },
+      { name: "TypeScript", level: 80 },
     ],
   },
   {
     name: "Styling",
     icon: <Palette className="w-5 h-5" />,
+    color: "from-purple-500 to-pink-500",
     skills: [
-      "Sass",
-      "Tailwind CSS",
-      "Bootstrap",
-      "Material-UI",
+      { name: "Sass", level: 85 },
+      { name: "Tailwind CSS", level: 90 },
+      { name: "Bootstrap", level: 88 },
+      { name: "Material-UI", level: 75 },
     ],
   },
   {
-    name: "Others",
+    name: "Tools & Others",
     icon: <Database className="w-5 h-5" />,
+    color: "from-green-500 to-emerald-500",
     skills: [
-      "Git",
-      "GitHub",
-      "Vercel",
-      "Vite",
-      "Netlify",
-      "Node.js",
-      "Supabase",
-      "GraphQL",
+      { name: "Git", level: 85 },
+      { name: "GitHub", level: 88 },
+      { name: "Vercel", level: 80 },
+      { name: "Vite", level: 82 },
+      { name: "Netlify", level: 85 },
+      { name: "Node.js", level: 70 },
+      { name: "Supabase", level: 75 },
+      { name: "GraphQL", level: 65 },
     ],
   },
 ]
@@ -54,71 +57,119 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
   const [activeTab, setActiveTab] = useState(skillCategories[0].name)
 
   return (
-    <section className="mb-16" id="skills">
-      <h2
-        className={`text-3xl font-bold mb-8 flex items-center ${
-          isDarkMode ? "text-gray-100" : "text-gray-900"
-        }`}
-      >
-        <Briefcase className="mr-3 w-8 h-8" /> Skills & Expertise
-      </h2>
+    <section className="space-y-16" id="skills">
+      <div className="text-center space-y-4">
+        <h2
+          className={`text-4xl lg:text-5xl font-bold ${
+            isDarkMode
+              ? "bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text"
+              : "bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text"
+          }`}
+        >
+          Skills & Expertise
+        </h2>
+        <p className={`text-xl max-w-2xl mx-auto ${
+          isDarkMode ? "text-slate-400" : "text-slate-600"
+        }`}>
+          Technologies and tools I use to bring ideas to life
+        </p>
+      </div>
+
       <Card
-        className={`overflow-hidden ${
-          isDarkMode ? "bg-slate-800 border-slate-700" : "bg-white border-gray-200"
+        className={`overflow-hidden border-0 shadow-2xl ${
+          isDarkMode 
+            ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl" 
+            : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
         }`}
       >
         <CardContent className="p-0">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList
-              className={`flex w-full ${
-                isDarkMode ? "bg-slate-700" : "bg-gray-100"
-              }`}
+              className={`flex w-full h-16 rounded-none ${
+                isDarkMode ? "bg-slate-800/50" : "bg-slate-100/50"
+              } backdrop-blur-sm`}
             >
               {skillCategories.map((category) => (
                 <TabsTrigger
                   key={category.name}
                   value={category.name}
-                  className={`flex-1 py-2 px-4 flex items-center justify-center space-x-2 ${
+                  className={`flex-1 h-full flex items-center justify-center space-x-3 text-base font-medium transition-all duration-300 ${
                     isDarkMode
-                      ? "data-[state=active]:bg-slate-600 data-[state=active]:text-white"
-                      : "data-[state=active]:bg-white data-[state=active]:text-blue-600"
+                      ? "data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-700 data-[state=active]:to-slate-600 data-[state=active]:text-white"
+                      : "data-[state=active]:bg-gradient-to-r data-[state=active]:from-white data-[state=active]:to-slate-50 data-[state=active]:text-blue-600 data-[state=active]:shadow-lg"
                   }`}
                 >
-                  {category.icon}
-                  <span className="font-medium">{category.name}</span>
+                  <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} text-white`}>
+                    {category.icon}
+                  </div>
+                  <span>{category.name}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
-            <div className="p-6">
+            
+            <div className="p-8">
               {skillCategories.map((category) => (
-                <TabsContent key={category.name} value={category.name}>
+                <TabsContent key={category.name} value={category.name} className="mt-0">
                   {activeTab === category.name && (
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                      transition={{ duration: 0.4 }}
+                      className="space-y-6"
                     >
-                      {category.skills.map((skill, index) => (
-                        <motion.div
-                          key={skill}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                        >
-                          <Badge
-                            variant="secondary"
-                            className={`w-full py-2 px-3 text-sm font-medium ${
-                              isDarkMode
-                                ? "bg-slate-700 text-gray-200 hover:bg-slate-600"
-                                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                            } transition-colors duration-200`}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {category.skills.map((skill, index) => (
+                          <motion.div
+                            key={skill.name}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className={`p-4 rounded-xl ${
+                              isDarkMode 
+                                ? "bg-slate-800/30 border border-slate-700/30" 
+                                : "bg-white/50 border border-slate-200/30"
+                            } backdrop-blur-sm`}
                           >
-                            {skill}
-                          </Badge>
-                        </motion.div>
-                      ))}
+                            <div className="flex justify-between items-center mb-3">
+                              <span className={`font-semibold ${
+                                isDarkMode ? "text-slate-200" : "text-slate-800"
+                              }`}>
+                                {skill.name}
+                              </span>
+                              <span className={`text-sm font-medium ${
+                                isDarkMode ? "text-slate-400" : "text-slate-600"
+                              }`}>
+                                {skill.level}%
+                              </span>
+                            </div>
+                            <div className={`w-full h-2 rounded-full ${
+                              isDarkMode ? "bg-slate-700" : "bg-slate-200"
+                            } overflow-hidden`}>
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${skill.level}%` }}
+                                transition={{ duration: 1, delay: index * 0.1 }}
+                                className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
+                              />
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                      
+                      <div className="text-center pt-4">
+                        <Badge
+                          variant="secondary"
+                          className={`px-6 py-2 text-base font-medium ${
+                            isDarkMode
+                              ? "bg-gradient-to-r from-slate-700 to-slate-600 text-slate-200"
+                              : "bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800"
+                          }`}
+                        >
+                          <Zap className="w-4 h-4 mr-2" />
+                          {category.skills.length} Technologies Mastered
+                        </Badge>
+                      </div>
                     </motion.div>
                   )}
                 </TabsContent>
@@ -132,4 +183,3 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
 }
 
 export default ProfessionalSkills
-

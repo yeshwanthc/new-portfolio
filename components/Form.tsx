@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { Send, CheckCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 interface FormProps {
@@ -71,8 +72,6 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
         }
       );
 
-      console.log("EmailJS result:", result); 
-
       if (result.text === "OK") {
         setIsSent(true);
         setName("");
@@ -86,7 +85,7 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
         throw new Error(`Failed to send email: ${result.text}`);
       }
     } catch (error) {
-      console.error("EmailJS error:", error); 
+      console.error("EmailJS error:", error);
       let errorMessage = "Failed to send your message. Please try again later.";
       
       if (error instanceof Error) {
@@ -107,9 +106,11 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
     }
   };
 
-  const inputClassName = `w-full ${
-    isDarkMode ? "bg-slate-600 text-slate-100" : "bg-white text-slate-900"
-  }`;
+  const inputClassName = `w-full transition-all duration-200 ${
+    isDarkMode 
+      ? "bg-slate-800/50 border-slate-600/50 text-slate-100 placeholder:text-slate-400 focus:border-blue-500 focus:bg-slate-800/70" 
+      : "bg-white/70 border-slate-300/50 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:bg-white/90"
+  } backdrop-blur-sm`;
 
   const errorClassName = `text-sm ${
     isDarkMode ? "text-red-400" : "text-red-600"
@@ -118,20 +119,43 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
   if (isSent) {
     return (
       <Card
-        className={`${
+        className={`border-0 shadow-2xl ${
           isDarkMode
-            ? "bg-slate-700 border-slate-600"
-            : "bg-slate-50 border-slate-200"
+            ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl"
+            : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
         }`}
       >
-        <CardContent className="flex items-center justify-center h-64">
-          <p
-            className={`text-xl font-semibold ${
+        <CardContent className="flex flex-col items-center justify-center h-80 text-center space-y-6">
+          <div className={`p-4 rounded-full ${
+            isDarkMode ? "bg-green-500/20" : "bg-green-100"
+          }`}>
+            <CheckCircle className={`w-12 h-12 ${
+              isDarkMode ? "text-green-400" : "text-green-600"
+            }`} />
+          </div>
+          <div className="space-y-2">
+            <h3 className={`text-2xl font-bold ${
               isDarkMode ? "text-slate-100" : "text-slate-900"
+            }`}>
+              Message Sent Successfully!
+            </h3>
+            <p className={`text-lg ${
+              isDarkMode ? "text-slate-400" : "text-slate-600"
+            }`}>
+              Thank you for reaching out. I'll get back to you soon!
+            </p>
+          </div>
+          <Button
+            onClick={() => setIsSent(false)}
+            variant="outline"
+            className={`${
+              isDarkMode
+                ? "border-slate-600 text-slate-300 hover:bg-slate-700"
+                : "border-slate-300 text-slate-700 hover:bg-slate-50"
             }`}
           >
-            Thank you for your message! We'll get back to you soon.
-          </p>
+            Send Another Message
+          </Button>
         </CardContent>
       </Card>
     );
@@ -139,22 +163,25 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
 
   return (
     <Card
-      className={`${
+      className={`border-0 shadow-2xl ${
         isDarkMode
-          ? "bg-slate-700 border-slate-600"
-          : "bg-slate-50 border-slate-200"
+          ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl"
+          : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
       }`}
     >
       <CardHeader>
         <CardTitle
-          className={`${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+          className={`text-2xl font-bold flex items-center ${
+            isDarkMode ? "text-slate-100" : "text-slate-900"
+          }`}
         >
+          <Send className="mr-3 w-6 h-6" />
           Get in Touch
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
             <Input
               type="text"
               placeholder="Your Name"
@@ -164,7 +191,8 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
             />
             {errors.name && <p className={errorClassName}>{errors.name}</p>}
           </div>
-          <div>
+          
+          <div className="space-y-2">
             <Input
               type="email"
               placeholder="Your Email"
@@ -174,28 +202,40 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
             />
             {errors.email && <p className={errorClassName}>{errors.email}</p>}
           </div>
-          <div>
+          
+          <div className="space-y-2">
             <Textarea
               placeholder="Your Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className={inputClassName}
-              rows={4}
+              rows={5}
             />
             {errors.message && (
               <p className={errorClassName}>{errors.message}</p>
             )}
           </div>
+          
           <Button
             type="submit"
-            className={`w-full ${
+            className={`w-full py-3 text-lg font-medium transition-all duration-300 ${
               isDarkMode
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-                : "bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800"
-            } text-white`}
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25"
+                : "bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 text-white shadow-lg hover:shadow-blue-500/25"
+            } transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {isSubmitting ? (
+              <div className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Sending...
+              </div>
+            ) : (
+              <div className="flex items-center justify-center">
+                <Send className="mr-2 h-5 w-5" />
+                Send Message
+              </div>
+            )}
           </Button>
         </form>
       </CardContent>
