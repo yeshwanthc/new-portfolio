@@ -31,6 +31,8 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/email-signature-generator",
       tags: ["React.js", "Tailwind CSS", "TypeScript"],
       featured: true,
+      gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+      accentColor: "blue",
     },
     {
       title: "Web Scrapper",
@@ -40,6 +42,8 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/web-scrapper",
       tags: [ "Next.js", "TypeScript","Supabase"],
       featured: true,
+      gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+      accentColor: "emerald",
     },
     {
       title: "Lumière Spaces",
@@ -49,6 +53,8 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/lumiere-spaces",
       tags: ["React.js",  "TypeScript", "Tailwind CSS"],
       featured: false,
+      gradient: "from-violet-500/15 via-purple-500/15 to-fuchsia-500/15",
+      accentColor: "violet",
     },
     {
       title: "E-Zee",
@@ -58,6 +64,8 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: null,
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
       featured: false,
+      gradient: "from-orange-500/15 via-amber-500/15 to-yellow-500/15",
+      accentColor: "orange",
     },
     {
       title: "React Dashboard",
@@ -67,6 +75,8 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/react-dashboard",
       tags: ["React.js", "Material UI", "TypeScript"],
       featured: false,
+      gradient: "from-indigo-500/15 via-blue-500/15 to-sky-500/15",
+      accentColor: "indigo",
     },
     {
       title: "Dutch Aviation Trainers",
@@ -76,12 +86,61 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: null,
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
       featured: false,
+      gradient: "from-rose-500/15 via-pink-500/15 to-red-500/15",
+      accentColor: "rose",
     },
   ];
 
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = projects.filter(p => !p.featured);
 
+  const getAccentColors = (accentColor: string, isDarkMode: boolean) => {
+    const colors = {
+      blue: {
+        primary: isDarkMode ? "from-blue-400 to-blue-600" : "from-blue-500 to-blue-700",
+        secondary: isDarkMode ? "text-blue-400" : "text-blue-600",
+        bg: isDarkMode ? "bg-blue-500/10" : "bg-blue-50",
+        border: isDarkMode ? "border-blue-500/30" : "border-blue-200",
+        hover: isDarkMode ? "hover:bg-blue-500/20" : "hover:bg-blue-100"
+      },
+      emerald: {
+        primary: isDarkMode ? "from-emerald-400 to-emerald-600" : "from-emerald-500 to-emerald-700",
+        secondary: isDarkMode ? "text-emerald-400" : "text-emerald-600",
+        bg: isDarkMode ? "bg-emerald-500/10" : "bg-emerald-50",
+        border: isDarkMode ? "border-emerald-500/30" : "border-emerald-200",
+        hover: isDarkMode ? "hover:bg-emerald-500/20" : "hover:bg-emerald-100"
+      },
+      violet: {
+        primary: isDarkMode ? "from-violet-400 to-violet-600" : "from-violet-500 to-violet-700",
+        secondary: isDarkMode ? "text-violet-400" : "text-violet-600",
+        bg: isDarkMode ? "bg-violet-500/10" : "bg-violet-50",
+        border: isDarkMode ? "border-violet-500/30" : "border-violet-200",
+        hover: isDarkMode ? "hover:bg-violet-500/20" : "hover:bg-violet-100"
+      },
+      orange: {
+        primary: isDarkMode ? "from-orange-400 to-orange-600" : "from-orange-500 to-orange-700",
+        secondary: isDarkMode ? "text-orange-400" : "text-orange-600",
+        bg: isDarkMode ? "bg-orange-500/10" : "bg-orange-50",
+        border: isDarkMode ? "border-orange-500/30" : "border-orange-200",
+        hover: isDarkMode ? "hover:bg-orange-500/20" : "hover:bg-orange-100"
+      },
+      indigo: {
+        primary: isDarkMode ? "from-indigo-400 to-indigo-600" : "from-indigo-500 to-indigo-700",
+        secondary: isDarkMode ? "text-indigo-400" : "text-indigo-600",
+        bg: isDarkMode ? "bg-indigo-500/10" : "bg-indigo-50",
+        border: isDarkMode ? "border-indigo-500/30" : "border-indigo-200",
+        hover: isDarkMode ? "hover:bg-indigo-500/20" : "hover:bg-indigo-100"
+      },
+      rose: {
+        primary: isDarkMode ? "from-rose-400 to-rose-600" : "from-rose-500 to-rose-700",
+        secondary: isDarkMode ? "text-rose-400" : "text-rose-600",
+        bg: isDarkMode ? "bg-rose-500/10" : "bg-rose-50",
+        border: isDarkMode ? "border-rose-500/30" : "border-rose-200",
+        hover: isDarkMode ? "hover:bg-rose-500/20" : "hover:bg-rose-100"
+      }
+    };
+    return colors[accentColor as keyof typeof colors];
+  };
   return (
     <section className="space-y-16" id="projects">
       <div className="text-center space-y-4">
@@ -104,6 +163,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       {/* Featured Projects */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {featuredProjects.map((project, index) => (
+          const accentColors = getAccentColors(project.accentColor, isDarkMode);
           <Card
             key={index}
             className={`group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
@@ -183,36 +243,70 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
         ))}
       </div>
 
-      {/* Other Projects */}
-      <div className="space-y-8">
-        <h3 className={`text-2xl font-bold text-center ${
-          isDarkMode ? "text-slate-200" : "text-slate-800"
-        }`}>
+                    className={`w-full group/btn transition-all duration-300 bg-gradient-to-r ${accentColors.primary} text-white shadow-lg hover:shadow-xl hover:scale-105 border-0`}
           Other Projects
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {otherProjects.map((project, index) => (
             <Card
               key={index}
-              className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 ${
-                isDarkMode
-                  ? "bg-slate-900/30 border-slate-700/30 backdrop-blur-sm"
-                  : "bg-white/70 border-slate-200/30 backdrop-blur-sm"
-              } shadow-lg hover:shadow-xl`}
+              className={`group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:rotate-1 ${
+          );
+        })}
+                  ? `bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 border-slate-700/30 backdrop-blur-xl`
+                  : `bg-gradient-to-br from-white/90 via-slate-50/70 to-white/90 border-slate-200/40 backdrop-blur-xl`
+              } shadow-2xl hover:shadow-3xl border-2`}
+              style={{
+                background: isDarkMode 
+                  ? `linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 50%, rgba(15, 23, 42, 0.9) 100%), linear-gradient(135deg, ${project.gradient.replace(/from-|via-|to-/g, '').split(' ').map(color => `var(--${color.replace('/', '-')})`).join(', ')})`
+                  : `linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.8) 50%, rgba(255, 255, 255, 0.95) 100%)`
+              }}
             >
+              {/* Accent border */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${accentColors.primary} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-lg`} />
+            const accentColors = getAccentColors(project.accentColor, isDarkMode);
+            return (
+              
               <div className="relative overflow-hidden">
-                <Image
+                className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-rotate-1 ${
                   src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={250}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                    ? "bg-slate-900/50 border-slate-700/40 backdrop-blur-sm"
+                    : "bg-white/80 border-slate-200/40 backdrop-blur-sm"
+                } shadow-lg hover:shadow-xl border-2`}
+                  className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                {/* Accent line */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentColors.primary}`} />
+                
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                
+                {/* Featured badge */}
+                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${accentColors.bg} ${accentColors.secondary} backdrop-blur-sm border ${accentColors.border}`}>
+                  ✨ Featured
+                    className="w-full h-48 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  
+                  {/* Hover overlay with project links */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex space-x-3">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/20">
+                          <ExternalLink className="h-4 w-4" />
+                        </Button>
+                      </a>
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/20">
+                            <Github className="h-4 w-4" />
+                          </Button>
+                        </a>
+                      )}
+                    </div>
+                  </div>
 
               <CardHeader className="pb-2">
-                <CardTitle className={`text-lg font-semibold ${
+                <CardHeader className="pb-3 space-y-2">
                   isDarkMode ? "text-slate-100" : "text-slate-900"
                 }`}>
                   {project.title}
@@ -231,48 +325,29 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                       key={i}
                       variant="secondary"
                       className={`text-xs ${
-                        isDarkMode
+                        className={`text-xs transition-all duration-200 ${
                           ? "bg-slate-700/50 text-slate-300"
-                          : "bg-slate-100 text-slate-700"
-                      }`}
-                    >
+                            ? `${accentColors.bg} ${accentColors.secondary} border ${accentColors.border}`
+                            : `${accentColors.bg} ${accentColors.secondary} border ${accentColors.border}`
+                        } hover:scale-105`}
                       {tag}
                     </Badge>
                   ))}
                 </div>
                 <div className="flex space-x-2">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                     <Button
                       size="sm"
-                      className={`w-full ${
-                        isDarkMode
-                          ? "bg-slate-700 text-slate-100 hover:bg-slate-600"
-                          : "bg-slate-200 text-slate-800 hover:bg-slate-300"
-                      }`}
+                      className={`w-full bg-gradient-to-r ${accentColors.primary} text-white hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg`}
                     >
-                      <ExternalLink className="mr-1 h-3 w-3" />
-                      View
+                      <ExternalLink className="mr-2 h-3 w-3" />
+                      View Project
                     </Button>
                   </a>
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className={`${
-                          isDarkMode
-                            ? "border-slate-600 text-slate-300 hover:bg-slate-700"
-                            : "border-slate-300 text-slate-700 hover:bg-slate-50"
-                        }`}
-                      >
-                        <Github className="h-3 w-3" />
-                      </Button>
-                    </a>
-                  )}
-                </div>
-              </CardContent>
             </Card>
-          ))}
+              <CardHeader className="space-y-4 relative">
+            );
+          })}
         </div>
       </div>
     </section>
@@ -280,3 +355,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
 };
 
 export default Projects;
+                      className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
+                          ? `bg-slate-800/50 text-slate-300 border border-slate-600/30 ${accentColors.hover}`
+                          : `bg-slate-100/80 text-slate-700 border border-slate-200/50 ${accentColors.hover}`
+                      } hover:scale-105`}
