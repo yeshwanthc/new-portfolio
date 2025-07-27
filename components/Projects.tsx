@@ -141,6 +141,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     };
     return colors[accentColor as keyof typeof colors];
   };
+
   return (
     <section className="space-y-16" id="projects">
       <div className="text-center space-y-4">
@@ -162,129 +163,124 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
 
       {/* Featured Projects */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {featuredProjects.map((project, index) => (
+        {featuredProjects.map((project, index) => {
           const accentColors = getAccentColors(project.accentColor, isDarkMode);
-          <Card
-            key={index}
-            className={`group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
-              isDarkMode
-                ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700/50 backdrop-blur-xl"
-                : "bg-gradient-to-br from-white/80 to-slate-50/80 border-slate-200/50 backdrop-blur-xl"
-            } shadow-2xl hover:shadow-3xl`}
-          >
-            <div className="relative overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={600}
-                height={400}
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/20">
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </a>
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/20">
-                      <Github className="h-4 w-4" />
-                    </Button>
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <CardHeader className="space-y-3">
-              <CardTitle className={`text-xl font-bold ${
-                isDarkMode ? "text-slate-100" : "text-slate-900"
-              }`}>
-                {project.title}
-              </CardTitle>
-              <CardDescription className={`text-base leading-relaxed ${
-                isDarkMode ? "text-slate-400" : "text-slate-600"
-              }`}>
-                {project.description}
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, i) => (
-                  <Badge
-                    key={i}
-                    variant="secondary"
-                    className={`px-3 py-1 text-sm font-medium transition-colors duration-200 ${
-                      isDarkMode
-                        ? "bg-slate-700/50 text-slate-300 hover:bg-slate-600/50"
-                        : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                    }`}
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <Button
-                  className={`w-full group/btn transition-all duration-300 ${
-                    isDarkMode
-                      ? "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
-                      : "bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 text-white"
-                  } shadow-lg hover:shadow-xl`}
-                >
-                  View Project 
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                </Button>
-              </a>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-                    className={`w-full group/btn transition-all duration-300 bg-gradient-to-r ${accentColors.primary} text-white shadow-lg hover:shadow-xl hover:scale-105 border-0`}
-          Other Projects
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {otherProjects.map((project, index) => (
+          return (
             <Card
               key={index}
-              className={`group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:rotate-1 ${
-          );
-        })}
-                  ? `bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 border-slate-700/30 backdrop-blur-xl`
-                  : `bg-gradient-to-br from-white/90 via-slate-50/70 to-white/90 border-slate-200/40 backdrop-blur-xl`
-              } shadow-2xl hover:shadow-3xl border-2`}
-              style={{
-                background: isDarkMode 
-                  ? `linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 50%, rgba(15, 23, 42, 0.9) 100%), linear-gradient(135deg, ${project.gradient.replace(/from-|via-|to-/g, '').split(' ').map(color => `var(--${color.replace('/', '-')})`).join(', ')})`
-                  : `linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.8) 50%, rgba(255, 255, 255, 0.95) 100%)`
-              }}
+              className={`group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
+                isDarkMode
+                  ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700/50 backdrop-blur-xl"
+                  : "bg-gradient-to-br from-white/80 to-slate-50/80 border-slate-200/50 backdrop-blur-xl"
+              } shadow-2xl hover:shadow-3xl`}
             >
               {/* Accent border */}
               <div className={`absolute inset-0 bg-gradient-to-r ${accentColors.primary} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-lg`} />
-            const accentColors = getAccentColors(project.accentColor, isDarkMode);
-            return (
               
               <div className="relative overflow-hidden">
-                className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-rotate-1 ${
+                <Image
                   src={project.image}
-                    ? "bg-slate-900/50 border-slate-700/40 backdrop-blur-sm"
-                    : "bg-white/80 border-slate-200/40 backdrop-blur-sm"
-                } shadow-lg hover:shadow-xl border-2`}
-                  className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                {/* Accent line */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentColors.primary}`} />
-                
+                  alt={project.title}
+                  width={600}
+                  height={400}
+                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Featured badge */}
                 <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${accentColors.bg} ${accentColors.secondary} backdrop-blur-sm border ${accentColors.border}`}>
                   ✨ Featured
-                    className="w-full h-48 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                </div>
                 
+                <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/20">
+                      <ExternalLink className="h-4 w-4" />
+                    </Button>
+                  </a>
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-white/20">
+                        <Github className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <CardHeader className="space-y-3">
+                <CardTitle className={`text-xl font-bold ${
+                  isDarkMode ? "text-slate-100" : "text-slate-900"
+                }`}>
+                  {project.title}
+                </CardTitle>
+                <CardDescription className={`text-base leading-relaxed ${
+                  isDarkMode ? "text-slate-400" : "text-slate-600"
+                }`}>
+                  {project.description}
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, i) => (
+                    <Badge
+                      key={i}
+                      variant="secondary"
+                      className={`px-3 py-1 text-sm font-medium transition-colors duration-200 ${
+                        isDarkMode
+                          ? "bg-slate-700/50 text-slate-300 hover:bg-slate-600/50"
+                          : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                      }`}
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    className={`w-full group/btn transition-all duration-300 bg-gradient-to-r ${accentColors.primary} text-white shadow-lg hover:shadow-xl hover:scale-105 border-0`}
+                  >
+                    View Project 
+                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
+                </a>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Other Projects */}
+      <div className="space-y-8">
+        <h3 className={`text-3xl font-bold text-center ${
+          isDarkMode ? "text-slate-200" : "text-slate-800"
+        }`}>
+          Other Projects
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {otherProjects.map((project, index) => {
+            const accentColors = getAccentColors(project.accentColor, isDarkMode);
+            return (
+              <Card
+                key={index}
+                className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-rotate-1 ${
+                  isDarkMode
+                    ? "bg-slate-900/50 border-slate-700/40 backdrop-blur-sm"
+                    : "bg-white/80 border-slate-200/40 backdrop-blur-sm"
+                } shadow-lg hover:shadow-xl border-2`}
+              >
+                {/* Accent line */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentColors.primary}`} />
+                
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={300}
+                    className="w-full h-48 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                  />
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                   
                   {/* Hover overlay with project links */}
@@ -304,37 +300,37 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                       )}
                     </div>
                   </div>
+                </div>
 
-              <CardHeader className="pb-2">
                 <CardHeader className="pb-3 space-y-2">
-                  isDarkMode ? "text-slate-100" : "text-slate-900"
-                }`}>
-                  {project.title}
-                </CardTitle>
-                <CardDescription className={`text-sm ${
-                  isDarkMode ? "text-slate-400" : "text-slate-600"
-                } line-clamp-3`}>
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
+                  <CardTitle className={`text-lg font-bold ${
+                    isDarkMode ? "text-slate-100" : "text-slate-900"
+                  }`}>
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className={`text-sm ${
+                    isDarkMode ? "text-slate-400" : "text-slate-600"
+                  } line-clamp-3`}>
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
 
-              <CardContent className="space-y-3">
-                <div className="flex flex-wrap gap-1">
-                  {project.tags.slice(0, 3).map((tag, i) => (
-                    <Badge
-                      key={i}
-                      variant="secondary"
-                      className={`text-xs ${
+                <CardContent className="space-y-3">
+                  <div className="flex flex-wrap gap-1">
+                    {project.tags.slice(0, 3).map((tag, i) => (
+                      <Badge
+                        key={i}
+                        variant="secondary"
                         className={`text-xs transition-all duration-200 ${
-                          ? "bg-slate-700/50 text-slate-300"
+                          isDarkMode
                             ? `${accentColors.bg} ${accentColors.secondary} border ${accentColors.border}`
                             : `${accentColors.bg} ${accentColors.secondary} border ${accentColors.border}`
                         } hover:scale-105`}
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex space-x-2">
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                     <Button
                       size="sm"
@@ -344,8 +340,8 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                       View Project
                     </Button>
                   </a>
-            </Card>
-              <CardHeader className="space-y-4 relative">
+                </CardContent>
+              </Card>
             );
           })}
         </div>
@@ -355,7 +351,3 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
 };
 
 export default Projects;
-                      className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
-                          ? `bg-slate-800/50 text-slate-300 border border-slate-600/30 ${accentColors.hover}`
-                          : `bg-slate-100/80 text-slate-700 border border-slate-200/50 ${accentColors.hover}`
-                      } hover:scale-105`}
