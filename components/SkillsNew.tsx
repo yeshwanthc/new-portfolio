@@ -78,8 +78,8 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
       <Card
         className={`overflow-hidden border-0 shadow-2xl ${
           isDarkMode 
-            ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl" 
-            : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
+            ? "bg-slate-900/70 backdrop-blur-xl border border-slate-700/30" 
+            : "bg-white/90 backdrop-blur-xl border border-slate-200/30"
         }`}
       >
         <CardContent className="p-0">
@@ -87,7 +87,9 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
             <TabsList
               className={`flex w-full h-16 rounded-none ${
                 isDarkMode ? "bg-slate-800/50" : "bg-slate-100/50"
-              } backdrop-blur-sm`}
+              } backdrop-blur-sm border-b ${
+                isDarkMode ? "border-slate-700/30" : "border-slate-200/30"
+              }`}
             >
               {skillCategories.map((category) => (
                 <TabsTrigger
@@ -95,8 +97,8 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                   value={category.name}
                   className={`flex-1 h-full flex items-center justify-center space-x-3 text-base font-medium transition-all duration-300 ${
                     isDarkMode
-                      ? "data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-700 data-[state=active]:to-slate-600 data-[state=active]:text-white"
-                      : "data-[state=active]:bg-gradient-to-r data-[state=active]:from-white data-[state=active]:to-slate-50 data-[state=active]:text-blue-600 data-[state=active]:shadow-lg"
+                      ? "data-[state=active]:bg-slate-700/60 data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-blue-400"
+                      : "data-[state=active]:bg-white/80 data-[state=active]:text-blue-600 data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:shadow-lg"
                   }`}
                 >
                   <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} text-white`}>
@@ -127,8 +129,8 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             className={`p-4 rounded-xl ${
                               isDarkMode 
-                                ? "bg-slate-800/30 border border-slate-700/30" 
-                                : "bg-white/50 border border-slate-200/30"
+                                ? "bg-slate-800/50 border border-slate-600/40 hover:bg-slate-700/50" 
+                                : "bg-white/70 border border-slate-200/50 hover:bg-slate-50/80"
                             } backdrop-blur-sm`}
                           >
                             <div className="flex justify-between items-center mb-3">
@@ -150,7 +152,7 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                                 initial={{ width: 0 }}
                                 animate={{ width: `${skill.level}%` }}
                                 transition={{ duration: 1, delay: index * 0.1 }}
-                                className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
+                                className={`h-full bg-gradient-to-r ${category.color} rounded-full shadow-sm`}
                               />
                             </div>
                           </motion.div>
@@ -162,8 +164,8 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                           variant="secondary"
                           className={`px-6 py-2 text-base font-medium ${
                             isDarkMode
-                              ? "bg-gradient-to-r from-slate-700 to-slate-600 text-slate-200"
-                              : "bg-gradient-to-r from-slate-100 to-slate-200 text-slate-800"
+                              ? "bg-slate-800/60 text-blue-300 border border-slate-600/40"
+                              : "bg-blue-50 text-blue-700 border border-blue-200/50"
                           }`}
                         >
                           <Zap className="w-4 h-4 mr-2" />

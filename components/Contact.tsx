@@ -82,8 +82,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
           <Card
             className={`border-0 shadow-2xl ${
               isDarkMode
-                ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl"
-                : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
+                ? "bg-slate-900/70 backdrop-blur-xl border border-slate-700/30"
+                : "bg-white/90 backdrop-blur-xl border border-slate-200/30"
             }`}
           >
             <CardHeader>
@@ -101,8 +101,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                 <div key={index} className="flex items-center space-x-4 group">
                   <div className={`p-3 rounded-full ${
                     isDarkMode 
-                      ? "bg-slate-700/50 text-slate-300 group-hover:bg-blue-500/20" 
-                      : "bg-slate-100 text-slate-700 group-hover:bg-blue-50"
+                      ? "bg-slate-800/60 text-blue-400 group-hover:bg-blue-500/20 border border-slate-600/30" 
+                      : "bg-blue-50 text-blue-600 group-hover:bg-blue-100 border border-blue-200/30"
                   } transition-colors duration-200`}>
                     {info.icon}
                   </div>
@@ -139,8 +139,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
           <Card
             className={`border-0 shadow-2xl ${
               isDarkMode
-                ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl"
-                : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
+                ? "bg-slate-900/70 backdrop-blur-xl border border-slate-700/30"
+                : "bg-white/90 backdrop-blur-xl border border-slate-200/30"
             }`}
           >
             <CardHeader>
@@ -162,8 +162,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     rel="noopener noreferrer"
                     className={`group p-4 rounded-full transition-all duration-300 transform hover:scale-110 ${
                       isDarkMode
-                        ? "bg-slate-700/30 text-slate-300 hover:bg-slate-600/50"
-                        : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                        ? "bg-slate-800/50 text-slate-300 hover:bg-blue-500/20 hover:text-blue-400 border border-slate-600/30"
+                        : "bg-slate-100 text-slate-700 hover:bg-blue-50 hover:text-blue-600 border border-slate-200/30"
                     } ${link.color}`}
                   >
                     {link.icon}
@@ -177,16 +177,16 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
           {/* Call to Action */}
           <div className={`text-center p-8 rounded-2xl ${
             isDarkMode 
-              ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20" 
-              : "bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200"
+              ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 backdrop-blur-sm" 
+              : "bg-gradient-to-r from-blue-50/80 to-purple-50/80 border border-blue-200/50 backdrop-blur-sm"
           }`}>
             <h3 className={`text-xl font-bold mb-2 ${
-              isDarkMode ? "text-slate-200" : "text-slate-800"
+              isDarkMode ? "text-blue-300" : "text-blue-800"
             }`}>
               Ready to Start Your Project?
             </h3>
             <p className={`${
-              isDarkMode ? "text-slate-400" : "text-slate-600"
+              isDarkMode ? "text-blue-200/80" : "text-blue-700/80"
             }`}>
               Let's discuss your ideas and turn them into reality. I'm always excited to work on new challenges and create amazing digital experiences.
             </p>
