@@ -31,7 +31,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/email-signature-generator",
       tags: ["React.js", "Tailwind CSS", "TypeScript"],
       featured: true,
-      gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+      gradient: "from-blue-500/10 to-indigo-500/10",
       accentColor: "blue",
     },
     {
@@ -42,7 +42,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/web-scrapper",
       tags: [ "Next.js", "TypeScript","Supabase"],
       featured: true,
-      gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+      gradient: "from-emerald-500/10 to-teal-500/10",
       accentColor: "emerald",
     },
     {
@@ -53,7 +53,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/lumiere-spaces",
       tags: ["React.js",  "TypeScript", "Tailwind CSS"],
       featured: false,
-      gradient: "from-violet-500/15 via-purple-500/15 to-fuchsia-500/15",
+      gradient: "from-violet-500/10 to-purple-500/10",
       accentColor: "violet",
     },
     {
@@ -64,7 +64,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: null,
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
       featured: false,
-      gradient: "from-orange-500/15 via-amber-500/15 to-yellow-500/15",
+      gradient: "from-orange-500/10 to-red-500/10",
       accentColor: "orange",
     },
     {
@@ -75,7 +75,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: "https://github.com/yeshwanthc/react-dashboard",
       tags: ["React.js", "Material UI", "TypeScript"],
       featured: false,
-      gradient: "from-indigo-500/15 via-blue-500/15 to-sky-500/15",
+      gradient: "from-indigo-500/10 to-blue-500/10",
       accentColor: "indigo",
     },
     {
@@ -86,7 +86,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
       github: null,
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
       featured: false,
-      gradient: "from-rose-500/15 via-pink-500/15 to-red-500/15",
+      gradient: "from-rose-500/10 to-pink-500/10",
       accentColor: "rose",
     },
   ];
@@ -97,46 +97,52 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
   const getAccentColors = (accentColor: string, isDarkMode: boolean) => {
     const colors = {
       blue: {
-        primary: isDarkMode ? "from-blue-400 to-blue-600" : "from-blue-500 to-blue-700",
-        secondary: isDarkMode ? "text-blue-400" : "text-blue-600",
-        bg: isDarkMode ? "bg-blue-500/10" : "bg-blue-50",
-        border: isDarkMode ? "border-blue-500/30" : "border-blue-200",
-        hover: isDarkMode ? "hover:bg-blue-500/20" : "hover:bg-blue-100"
+        primary: isDarkMode ? "from-blue-500 to-indigo-600" : "from-blue-600 to-indigo-700",
+        secondary: isDarkMode ? "text-blue-300" : "text-blue-700",
+        bg: isDarkMode ? "bg-blue-500/20" : "bg-blue-50",
+        border: isDarkMode ? "border-blue-400/40" : "border-blue-300",
+        hover: isDarkMode ? "hover:bg-blue-500/30" : "hover:bg-blue-100",
+        badge: isDarkMode ? "bg-blue-500/15 text-blue-300 border-blue-400/30" : "bg-blue-100 text-blue-800 border-blue-300"
       },
       emerald: {
-        primary: isDarkMode ? "from-emerald-400 to-emerald-600" : "from-emerald-500 to-emerald-700",
-        secondary: isDarkMode ? "text-emerald-400" : "text-emerald-600",
-        bg: isDarkMode ? "bg-emerald-500/10" : "bg-emerald-50",
-        border: isDarkMode ? "border-emerald-500/30" : "border-emerald-200",
-        hover: isDarkMode ? "hover:bg-emerald-500/20" : "hover:bg-emerald-100"
+        primary: isDarkMode ? "from-emerald-500 to-teal-600" : "from-emerald-600 to-teal-700",
+        secondary: isDarkMode ? "text-emerald-300" : "text-emerald-700",
+        bg: isDarkMode ? "bg-emerald-500/20" : "bg-emerald-50",
+        border: isDarkMode ? "border-emerald-400/40" : "border-emerald-300",
+        hover: isDarkMode ? "hover:bg-emerald-500/30" : "hover:bg-emerald-100",
+        badge: isDarkMode ? "bg-emerald-500/15 text-emerald-300 border-emerald-400/30" : "bg-emerald-100 text-emerald-800 border-emerald-300"
       },
       violet: {
-        primary: isDarkMode ? "from-violet-400 to-violet-600" : "from-violet-500 to-violet-700",
-        secondary: isDarkMode ? "text-violet-400" : "text-violet-600",
-        bg: isDarkMode ? "bg-violet-500/10" : "bg-violet-50",
-        border: isDarkMode ? "border-violet-500/30" : "border-violet-200",
-        hover: isDarkMode ? "hover:bg-violet-500/20" : "hover:bg-violet-100"
+        primary: isDarkMode ? "from-violet-500 to-purple-600" : "from-violet-600 to-purple-700",
+        secondary: isDarkMode ? "text-violet-300" : "text-violet-700",
+        bg: isDarkMode ? "bg-violet-500/20" : "bg-violet-50",
+        border: isDarkMode ? "border-violet-400/40" : "border-violet-300",
+        hover: isDarkMode ? "hover:bg-violet-500/30" : "hover:bg-violet-100",
+        badge: isDarkMode ? "bg-violet-500/15 text-violet-300 border-violet-400/30" : "bg-violet-100 text-violet-800 border-violet-300"
       },
       orange: {
-        primary: isDarkMode ? "from-orange-400 to-orange-600" : "from-orange-500 to-orange-700",
-        secondary: isDarkMode ? "text-orange-400" : "text-orange-600",
-        bg: isDarkMode ? "bg-orange-500/10" : "bg-orange-50",
-        border: isDarkMode ? "border-orange-500/30" : "border-orange-200",
-        hover: isDarkMode ? "hover:bg-orange-500/20" : "hover:bg-orange-100"
+        primary: isDarkMode ? "from-orange-500 to-red-600" : "from-orange-600 to-red-700",
+        secondary: isDarkMode ? "text-orange-300" : "text-orange-700",
+        bg: isDarkMode ? "bg-orange-500/20" : "bg-orange-50",
+        border: isDarkMode ? "border-orange-400/40" : "border-orange-300",
+        hover: isDarkMode ? "hover:bg-orange-500/30" : "hover:bg-orange-100",
+        badge: isDarkMode ? "bg-orange-500/15 text-orange-300 border-orange-400/30" : "bg-orange-100 text-orange-800 border-orange-300"
       },
       indigo: {
-        primary: isDarkMode ? "from-indigo-400 to-indigo-600" : "from-indigo-500 to-indigo-700",
-        secondary: isDarkMode ? "text-indigo-400" : "text-indigo-600",
-        bg: isDarkMode ? "bg-indigo-500/10" : "bg-indigo-50",
-        border: isDarkMode ? "border-indigo-500/30" : "border-indigo-200",
-        hover: isDarkMode ? "hover:bg-indigo-500/20" : "hover:bg-indigo-100"
+        primary: isDarkMode ? "from-indigo-500 to-blue-600" : "from-indigo-600 to-blue-700",
+        secondary: isDarkMode ? "text-indigo-300" : "text-indigo-700",
+        bg: isDarkMode ? "bg-indigo-500/20" : "bg-indigo-50",
+        border: isDarkMode ? "border-indigo-400/40" : "border-indigo-300",
+        hover: isDarkMode ? "hover:bg-indigo-500/30" : "hover:bg-indigo-100",
+        badge: isDarkMode ? "bg-indigo-500/15 text-indigo-300 border-indigo-400/30" : "bg-indigo-100 text-indigo-800 border-indigo-300"
       },
       rose: {
-        primary: isDarkMode ? "from-rose-400 to-rose-600" : "from-rose-500 to-rose-700",
-        secondary: isDarkMode ? "text-rose-400" : "text-rose-600",
-        bg: isDarkMode ? "bg-rose-500/10" : "bg-rose-50",
-        border: isDarkMode ? "border-rose-500/30" : "border-rose-200",
-        hover: isDarkMode ? "hover:bg-rose-500/20" : "hover:bg-rose-100"
+        primary: isDarkMode ? "from-rose-500 to-pink-600" : "from-rose-600 to-pink-700",
+        secondary: isDarkMode ? "text-rose-300" : "text-rose-700",
+        bg: isDarkMode ? "bg-rose-500/20" : "bg-rose-50",
+        border: isDarkMode ? "border-rose-400/40" : "border-rose-300",
+        hover: isDarkMode ? "hover:bg-rose-500/30" : "hover:bg-rose-100",
+        badge: isDarkMode ? "bg-rose-500/15 text-rose-300 border-rose-400/30" : "bg-rose-100 text-rose-800 border-rose-300"
       }
     };
     return colors[accentColor as keyof typeof colors];
@@ -170,12 +176,13 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
               key={index}
               className={`group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
                 isDarkMode
-                  ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 border-slate-700/50 backdrop-blur-xl"
-                  : "bg-gradient-to-br from-white/80 to-slate-50/80 border-slate-200/50 backdrop-blur-xl"
-              } shadow-2xl hover:shadow-3xl`}
+                  ? "bg-gradient-to-br from-slate-900/80 to-slate-800/60 border-slate-700/30 backdrop-blur-xl"
+                  : "bg-gradient-to-br from-white/90 to-slate-50/70 border-slate-200/40 backdrop-blur-xl"
+              } shadow-xl hover:shadow-2xl border`}
             >
               {/* Accent border */}
-              <div className={`absolute inset-0 bg-gradient-to-r ${accentColors.primary} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-lg`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-60 rounded-lg`} />
+              <div className={`absolute inset-0 bg-gradient-to-r ${accentColors.primary} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-lg`} />
               
               <div className="relative overflow-hidden">
                 <Image
@@ -188,7 +195,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Featured badge */}
-                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${accentColors.bg} ${accentColors.secondary} backdrop-blur-sm border ${accentColors.border}`}>
+                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border ${accentColors.badge}`}>
                   ✨ Featured
                 </div>
                 
@@ -227,11 +234,11 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                     <Badge
                       key={i}
                       variant="secondary"
-                      className={`px-3 py-1 text-sm font-medium transition-colors duration-200 ${
+                      className={`px-3 py-1 text-sm font-medium transition-all duration-200 ${
                         isDarkMode
-                          ? "bg-slate-700/50 text-slate-300 hover:bg-slate-600/50"
-                          : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                      }`}
+                          ? "bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border border-slate-600/40"
+                          : "bg-slate-100/80 text-slate-700 hover:bg-slate-200/80 border border-slate-300/40"
+                      } backdrop-blur-sm`}
                     >
                       {tag}
                     </Badge>
@@ -239,7 +246,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                 </div>
                 <a href={project.link} target="_blank" rel="noopener noreferrer">
                   <Button
-                    className={`w-full group/btn transition-all duration-300 bg-gradient-to-r ${accentColors.primary} text-white shadow-lg hover:shadow-xl hover:scale-105 border-0`}
+                    className={`w-full group/btn transition-all duration-300 bg-gradient-to-r ${accentColors.primary} text-white shadow-lg hover:shadow-xl hover:scale-[1.02] border-0 font-medium`}
                   >
                     View Project 
                     <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -266,12 +273,14 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                 key={index}
                 className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-rotate-1 ${
                   isDarkMode
-                    ? "bg-slate-900/50 border-slate-700/40 backdrop-blur-sm"
-                    : "bg-white/80 border-slate-200/40 backdrop-blur-sm"
-                } shadow-lg hover:shadow-xl border-2`}
+                    ? "bg-slate-900/70 border-slate-700/30 backdrop-blur-xl"
+                    : "bg-white/85 border-slate-200/30 backdrop-blur-xl"
+                } shadow-lg hover:shadow-xl border`}
               >
                 {/* Accent line */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accentColors.primary}`} />
+                {/* Background gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-40 rounded-lg`} />
                 
                 <div className="relative overflow-hidden">
                   <Image
@@ -305,27 +314,23 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                 <CardHeader className="pb-3 space-y-2">
                   <CardTitle className={`text-lg font-bold ${
                     isDarkMode ? "text-slate-100" : "text-slate-900"
-                  }`}>
+                  } relative z-10`}>
                     {project.title}
                   </CardTitle>
                   <CardDescription className={`text-sm ${
                     isDarkMode ? "text-slate-400" : "text-slate-600"
-                  } line-clamp-3`}>
+                  } line-clamp-3 relative z-10`}>
                     {project.description}
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-3 relative z-10">
                   <div className="flex flex-wrap gap-1">
                     {project.tags.slice(0, 3).map((tag, i) => (
                       <Badge
                         key={i}
                         variant="secondary"
-                        className={`text-xs transition-all duration-200 ${
-                          isDarkMode
-                            ? `${accentColors.bg} ${accentColors.secondary} border ${accentColors.border}`
-                            : `${accentColors.bg} ${accentColors.secondary} border ${accentColors.border}`
-                        } hover:scale-105`}
+                        className={`text-xs transition-all duration-200 hover:scale-105 ${accentColors.badge}`}
                       >
                         {tag}
                       </Badge>
@@ -334,7 +339,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                     <Button
                       size="sm"
-                      className={`w-full bg-gradient-to-r ${accentColors.primary} text-white hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg`}
+                      className={`w-full bg-gradient-to-r ${accentColors.primary} text-white hover:scale-[1.02] transition-all duration-300 shadow-md hover:shadow-lg font-medium`}
                     >
                       <ExternalLink className="mr-2 h-3 w-3" />
                       View Project
