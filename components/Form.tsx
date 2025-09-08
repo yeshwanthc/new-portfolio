@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, User, Mail, MessageSquare, Sparkles } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 interface FormProps {
@@ -106,53 +106,61 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
     }
   };
 
-  const inputClassName = `w-full transition-all duration-200 ${
+  const inputClassName = `w-full transition-all duration-300 focus:scale-[1.02] ${
     isDarkMode 
-      ? "bg-slate-800/50 border-slate-600/50 text-slate-100 placeholder:text-slate-400 focus:border-blue-500 focus:bg-slate-800/70" 
-      : "bg-white/70 border-slate-300/50 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:bg-white/90"
-  } backdrop-blur-sm`;
+      ? "bg-slate-800/60 border-slate-600/50 text-slate-100 placeholder:text-slate-400 focus:border-blue-500 focus:bg-slate-800/80 focus:ring-2 focus:ring-blue-500/20" 
+      : "bg-white/80 border-slate-300/50 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:bg-white/95 focus:ring-2 focus:ring-blue-500/20"
+  } backdrop-blur-sm shadow-lg hover:shadow-xl rounded-xl`;
 
   const errorClassName = `text-sm ${
     isDarkMode ? "text-red-400" : "text-red-600"
-  } mt-1`;
+  } mt-2 font-medium`;
 
   if (isSent) {
     return (
       <Card
-        className={`border-0 shadow-2xl ${
+        className={`border-0 shadow-2xl overflow-hidden ${
           isDarkMode
-            ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl"
-            : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
+            ? "bg-gradient-to-br from-slate-900/90 to-slate-800/70 backdrop-blur-xl"
+            : "bg-gradient-to-br from-white/95 to-slate-50/80 backdrop-blur-xl"
         }`}
       >
-        <CardContent className="flex flex-col items-center justify-center h-80 text-center space-y-6">
-          <div className={`p-4 rounded-full ${
-            isDarkMode ? "bg-green-500/20" : "bg-green-100"
-          }`}>
-            <CheckCircle className={`w-12 h-12 ${
-              isDarkMode ? "text-green-400" : "text-green-600"
-            }`} />
+        {/* Animated border */}
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 opacity-60 rounded-2xl" />
+        <div className={`absolute inset-[1px] bg-gradient-to-br ${
+          isDarkMode 
+            ? "from-slate-900/95 to-slate-800/90" 
+            : "from-white/95 to-slate-50/80"
+        } rounded-2xl`} />
+        
+        <CardContent className="relative flex flex-col items-center justify-center h-96 text-center space-y-8 p-12">
+          <div className="relative">
+            <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-2xl animate-pulse" />
+            <div className={`relative p-6 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-2xl`}>
+              <CheckCircle className="w-16 h-16" />
+            </div>
           </div>
-          <div className="space-y-2">
-            <h3 className={`text-2xl font-bold ${
+          
+          <div className="space-y-4">
+            <h3 className={`text-3xl font-bold ${
               isDarkMode ? "text-slate-100" : "text-slate-900"
             }`}>
-              Message Sent Successfully!
+              Message Sent Successfully! 🎉
             </h3>
-            <p className={`text-lg ${
-              isDarkMode ? "text-slate-400" : "text-slate-600"
+            <p className={`text-lg leading-relaxed max-w-md ${
+              isDarkMode ? "text-slate-300" : "text-slate-600"
             }`}>
-              Thank you for reaching out. I'll get back to you soon!
+              Thank you for reaching out! I've received your message and will get back to you within 24 hours.
             </p>
           </div>
+          
           <Button
             onClick={() => setIsSent(false)}
-            variant="outline"
-            className={`${
+            className={`px-8 py-3 text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 ${
               isDarkMode
-                ? "border-slate-600 text-slate-300 hover:bg-slate-700"
-                : "border-slate-300 text-slate-700 hover:bg-slate-50"
-            }`}
+                ? "bg-slate-800/60 text-slate-300 hover:bg-slate-700/80 border border-slate-600/40"
+                : "bg-slate-100/80 text-slate-700 hover:bg-slate-200/80 border border-slate-300/40"
+            } backdrop-blur-sm shadow-lg hover:shadow-xl`}
           >
             Send Another Message
           </Button>
@@ -163,54 +171,91 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
 
   return (
     <Card
-      className={`border-0 shadow-2xl ${
+      className={`border-0 shadow-2xl overflow-hidden ${
         isDarkMode
-          ? "bg-gradient-to-br from-slate-900/50 to-slate-800/50 backdrop-blur-xl"
-          : "bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-xl"
+          ? "bg-gradient-to-br from-slate-900/90 to-slate-800/70 backdrop-blur-xl"
+          : "bg-gradient-to-br from-white/95 to-slate-50/80 backdrop-blur-xl"
       }`}
     >
-      <CardHeader>
+      {/* Animated border */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-60 rounded-2xl" />
+      <div className={`absolute inset-[1px] bg-gradient-to-br ${
+        isDarkMode 
+          ? "from-slate-900/95 to-slate-800/90" 
+          : "from-white/95 to-slate-50/80"
+      } rounded-2xl`} />
+      
+      <CardHeader className="relative">
         <CardTitle
-          className={`text-2xl font-bold flex items-center ${
+          className={`text-3xl font-bold flex items-center gap-3 ${
             isDarkMode ? "text-slate-100" : "text-slate-900"
           }`}
         >
-          <Send className="mr-3 w-6 h-6" />
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-xl">
+            <Send className="w-7 h-7" />
+          </div>
           Get in Touch
         </CardTitle>
+        <p className={`text-lg mt-2 ${
+          isDarkMode ? "text-slate-300" : "text-slate-600"
+        }`}>
+          Let's discuss your project and bring your ideas to life
+        </p>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <Input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={inputClassName}
-            />
+      
+      <CardContent className="relative">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="space-y-3">
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
+                <User className={`w-5 h-5 ${
+                  isDarkMode ? "text-slate-400" : "text-slate-500"
+                }`} />
+              </div>
+              <Input
+                type="text"
+                placeholder="Your Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={`${inputClassName} pl-12 h-14 text-lg`}
+              />
+            </div>
             {errors.name && <p className={errorClassName}>{errors.name}</p>}
           </div>
           
-          <div className="space-y-2">
-            <Input
-              type="email"
-              placeholder="Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={inputClassName}
-            />
+          <div className="space-y-3">
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
+                <Mail className={`w-5 h-5 ${
+                  isDarkMode ? "text-slate-400" : "text-slate-500"
+                }`} />
+              </div>
+              <Input
+                type="email"
+                placeholder="your.email@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={`${inputClassName} pl-12 h-14 text-lg`}
+              />
+            </div>
             {errors.email && <p className={errorClassName}>{errors.email}</p>}
           </div>
           
-          <div className="space-y-2">
-            <Textarea
-              placeholder="Your Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className={inputClassName}
-              rows={5}
-            />
+          <div className="space-y-3">
+            <div className="relative">
+              <div className="absolute left-4 top-6 z-10">
+                <MessageSquare className={`w-5 h-5 ${
+                  isDarkMode ? "text-slate-400" : "text-slate-500"
+                }`} />
+              </div>
+              <Textarea
+                placeholder="Tell me about your project, ideas, or how I can help you..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className={`${inputClassName} pl-12 pt-6 text-lg min-h-[140px] resize-none`}
+                rows={6}
+              />
+            </div>
             {errors.message && (
               <p className={errorClassName}>{errors.message}</p>
             )}
@@ -218,26 +263,31 @@ const Form: React.FC<FormProps> = ({ isDarkMode }) => {
           
           <Button
             type="submit"
-            className={`w-full py-3 text-lg font-medium transition-all duration-300 ${
+            className={`w-full py-4 text-lg font-semibold transition-all duration-500 transform hover:scale-[1.02] ${
               isDarkMode
-                ? "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-blue-500/25"
-                : "bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 text-white shadow-lg hover:shadow-blue-500/25"
-            } transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
+                ? "bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 hover:from-blue-600 hover:via-purple-700 hover:to-pink-700 text-white shadow-2xl hover:shadow-blue-500/25"
+                : "bg-gradient-to-r from-blue-600 via-purple-700 to-pink-700 hover:from-blue-700 hover:via-purple-800 hover:to-pink-800 text-white shadow-2xl hover:shadow-blue-500/25"
+            } disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none rounded-xl border-0`}
             disabled={isSubmitting}
           >
             {isSubmitting ? (
-              <div className="flex items-center justify-center">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                Sending...
+              <div className="flex items-center justify-center gap-3">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                <span>Sending Message...</span>
               </div>
             ) : (
-              <div className="flex items-center justify-center">
-                <Send className="mr-2 h-5 w-5" />
-                Send Message
+              <div className="flex items-center justify-center gap-3">
+                <Send className="h-6 w-6" />
+                <span>Send Message</span>
+                <Sparkles className="h-5 w-5" />
               </div>
             )}
           </Button>
         </form>
+        
+        {/* Form decoration */}
+        <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-xl" />
+        <div className="absolute -top-2 -left-2 w-16 h-16 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-xl" />
       </CardContent>
     </Card>
   );
