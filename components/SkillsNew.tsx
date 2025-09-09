@@ -13,7 +13,7 @@ interface SkillsProps {
 const skillCategories = [
   {
     name: "Frontend",
-    icon: <Code className="w-6 h-6" />,
+    icon: <Code className="w-5 h-5 sm:w-6 sm:h-6" />,
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
     bgGradient: "from-blue-500/10 via-cyan-500/10 to-teal-500/10",
     skills: [
@@ -27,7 +27,7 @@ const skillCategories = [
   },
   {
     name: "Styling",
-    icon: <Palette className="w-6 h-6" />,
+    icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6" />,
     gradient: "from-purple-500 via-pink-500 to-rose-500",
     bgGradient: "from-purple-500/10 via-pink-500/10 to-rose-500/10",
     skills: [
@@ -39,7 +39,7 @@ const skillCategories = [
   },
   {
     name: "Tools & Others",
-    icon: <Database className="w-6 h-6" />,
+    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
     gradient: "from-emerald-500 via-green-500 to-teal-500",
     bgGradient: "from-emerald-500/10 via-green-500/10 to-teal-500/10",
     skills: [
@@ -59,39 +59,40 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
   const [activeCategory, setActiveCategory] = useState(0)
 
   return (
-    <section className="space-y-20" id="skills">
-      <div className="text-center space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 backdrop-blur-sm">
-          <TrendingUp className="w-4 h-4 text-emerald-400" />
-          <span className={`text-sm font-medium ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>
-            Technical Expertise
-          </span>
-        </div>
-        <h2
-          className={`text-5xl lg:text-6xl font-bold ${
+    <section className="py-16 lg:py-24" id="skills">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 backdrop-blur-sm mb-6">
+            <TrendingUp className="w-4 h-4 text-emerald-400" />
+            <span className={`text-sm font-medium ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>
+              Technical Expertise
+            </span>
+          </div>
+          
+          <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 ${
             isDarkMode
               ? "bg-gradient-to-r from-white via-emerald-100 to-teal-200 text-transparent bg-clip-text"
               : "bg-gradient-to-r from-slate-900 via-emerald-800 to-teal-800 text-transparent bg-clip-text"
-          }`}
-        >
-          Skills & Expertise
-        </h2>
-        <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${
-          isDarkMode ? "text-slate-300" : "text-slate-600"
-        }`}>
-          A comprehensive toolkit of modern technologies and frameworks that I leverage 
-          to create exceptional digital experiences and robust applications.
-        </p>
-      </div>
+          }`}>
+            Skills & Expertise
+          </h2>
+          
+          <p className={`text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed ${
+            isDarkMode ? "text-slate-300" : "text-slate-600"
+          }`}>
+            A comprehensive toolkit of modern technologies and frameworks that I leverage 
+            to create exceptional digital experiences and robust applications.
+          </p>
+        </div>
 
-      <div className="max-w-7xl mx-auto">
         {/* Category Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-12 lg:mb-16">
           {skillCategories.map((category, index) => (
             <button
               key={category.name}
               onClick={() => setActiveCategory(index)}
-              className={`group relative px-8 py-4 rounded-2xl transition-all duration-500 transform hover:scale-105 ${
+              className={`group relative px-6 py-3 sm:px-8 sm:py-4 rounded-2xl transition-all duration-500 transform hover:scale-105 ${
                 activeCategory === index
                   ? `bg-gradient-to-r ${category.gradient} text-white shadow-2xl`
                   : isDarkMode
@@ -99,15 +100,15 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                   : "bg-white/70 text-slate-700 hover:bg-slate-50/80 border border-slate-200/50"
               } backdrop-blur-sm`}
             >
-              <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-xl ${
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className={`p-1.5 sm:p-2 rounded-xl ${
                   activeCategory === index 
                     ? "bg-white/20" 
                     : `bg-gradient-to-r ${category.gradient} text-white`
                 }`}>
                   {category.icon}
                 </div>
-                <span className="font-semibold text-lg">{category.name}</span>
+                <span className="font-semibold text-sm sm:text-lg">{category.name}</span>
               </div>
               
               {/* Active indicator */}
@@ -123,14 +124,12 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
           ))}
         </div>
 
-        {/* Skills Display */}
-        <Card
-          className={`overflow-hidden border-0 shadow-2xl ${
-            isDarkMode 
-              ? "bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90" 
-              : "bg-gradient-to-br from-white/95 via-slate-50/80 to-white/95"
-          } backdrop-blur-xl`}
-        >
+        {/* Skills Display Card */}
+        <Card className={`overflow-hidden border-0 shadow-2xl ${
+          isDarkMode 
+            ? "bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90" 
+            : "bg-gradient-to-br from-white/95 via-slate-50/80 to-white/95"
+        } backdrop-blur-xl rounded-2xl`}>
           {/* Animated border */}
           <div className={`absolute inset-0 bg-gradient-to-r ${skillCategories[activeCategory].gradient} opacity-60 rounded-2xl`} />
           <div className={`absolute inset-[1px] bg-gradient-to-br ${
@@ -139,24 +138,24 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
               : "from-white/95 via-slate-50/80 to-white/95"
           } rounded-2xl`} />
           
-          <CardContent className="relative p-12">
+          <CardContent className="relative p-6 sm:p-8 lg:p-12">
             <motion.div
               key={activeCategory}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="space-y-8 lg:space-y-12"
             >
               {/* Category Header */}
               <div className="text-center space-y-4">
-                <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r ${skillCategories[activeCategory].bgGradient} border ${
+                <div className={`inline-flex items-center gap-3 px-4 py-3 sm:px-6 sm:py-3 rounded-2xl bg-gradient-to-r ${skillCategories[activeCategory].bgGradient} border ${
                   isDarkMode ? "border-slate-600/30" : "border-slate-200/50"
                 } backdrop-blur-sm`}>
                   <div className={`p-2 rounded-xl bg-gradient-to-r ${skillCategories[activeCategory].gradient} text-white`}>
                     {skillCategories[activeCategory].icon}
                   </div>
-                  <h3 className={`text-2xl font-bold ${
+                  <h3 className={`text-xl sm:text-2xl font-bold ${
                     isDarkMode ? "text-slate-100" : "text-slate-800"
                   }`}>
                     {skillCategories[activeCategory].name} Technologies
@@ -165,27 +164,27 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
               </div>
 
               {/* Skills Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {skillCategories[activeCategory].skills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`group p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
+                    className={`group p-4 sm:p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
                       isDarkMode 
                         ? "bg-slate-800/60 border border-slate-600/40 hover:bg-slate-700/60 hover:border-slate-500/60" 
                         : "bg-white/80 border border-slate-200/60 hover:bg-white/90 hover:border-slate-300/60"
                     } backdrop-blur-sm shadow-lg hover:shadow-xl`}
                   >
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       <div className="flex justify-between items-center">
-                        <span className={`font-bold text-lg ${
+                        <span className={`font-bold text-base sm:text-lg ${
                           isDarkMode ? "text-slate-100" : "text-slate-800"
                         }`}>
                           {skill.name}
                         </span>
-                        <Badge className={`px-3 py-1 font-semibold ${
+                        <Badge className={`px-2 py-1 sm:px-3 sm:py-1 font-semibold text-xs sm:text-sm ${
                           isDarkMode
                             ? "bg-slate-700/60 text-slate-200 border-slate-500/40"
                             : "bg-slate-100/80 text-slate-700 border-slate-300/40"
@@ -194,8 +193,8 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                         </Badge>
                       </div>
                       
-                      {/* Progress bar with gradient */}
-                      <div className={`w-full h-3 rounded-full overflow-hidden ${
+                      {/* Progress bar */}
+                      <div className={`w-full h-2.5 sm:h-3 rounded-full overflow-hidden ${
                         isDarkMode ? "bg-slate-700/60" : "bg-slate-200/80"
                       }`}>
                         <motion.div
@@ -210,12 +209,12 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                       </div>
                       
                       {/* Skill level indicator */}
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center justify-between">
                         <div className="flex gap-1">
                           {[...Array(5)].map((_, i) => (
                             <div
                               key={i}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
                                 i < Math.floor(skill.level / 20)
                                   ? `bg-gradient-to-r ${skill.color}`
                                   : isDarkMode
@@ -225,7 +224,7 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
                             />
                           ))}
                         </div>
-                        <span className={`text-sm font-medium ${
+                        <span className={`text-xs sm:text-sm font-medium ${
                           isDarkMode ? "text-slate-400" : "text-slate-600"
                         }`}>
                           {skill.level >= 90 ? "Expert" : skill.level >= 80 ? "Advanced" : skill.level >= 70 ? "Proficient" : "Intermediate"}
@@ -237,16 +236,16 @@ const ProfessionalSkills: React.FC<SkillsProps> = ({ isDarkMode = false }) => {
               </div>
               
               {/* Category Summary */}
-              <div className="text-center pt-8">
-                <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-2xl ${
+              <div className="text-center pt-6 sm:pt-8">
+                <div className={`inline-flex items-center gap-3 px-4 py-3 sm:px-6 sm:py-3 rounded-2xl ${
                   isDarkMode
                     ? "bg-slate-800/60 border border-slate-600/40"
                     : "bg-slate-100/80 border border-slate-200/50"
                 } backdrop-blur-sm`}>
-                  <Sparkles className={`w-5 h-5 ${
+                  <Sparkles className={`w-4 h-4 sm:w-5 sm:h-5 ${
                     isDarkMode ? "text-yellow-400" : "text-yellow-600"
                   }`} />
-                  <span className={`text-lg font-semibold ${
+                  <span className={`text-base sm:text-lg font-semibold ${
                     isDarkMode ? "text-slate-200" : "text-slate-700"
                   }`}>
                     {skillCategories[activeCategory].skills.length} Technologies Mastered
