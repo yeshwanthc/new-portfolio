@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Code, Briefcase, ArrowDown, Download } from "lucide-react";
 import Image from "next/image";
-import ImageMain from "../app/images/yesh.png";
 import Skills from "./SkillsNew";
 import Projects from "./Projects";
 import Contact from "./Contact";
@@ -199,7 +198,7 @@ export default function EnhancedPortfolio() {
                     : "bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600"
                 } shadow-2xl`}>
                   <Image
-                    src={ImageMain}
+                    src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Yeshwanth"
                     width={400}
                     height={400}
@@ -236,8 +235,28 @@ export default function EnhancedPortfolio() {
         <footer className={`py-12 border-t ${
           isDarkMode ? "border-slate-800" : "border-slate-200"
         }`}>
-          <div className="text-center">
-            <p className={`text-lg font-medium mb-2 ${
+          <div className="text-center space-y-4">
+            <div className="flex justify-center space-x-6 mb-4">
+              {[
+                { icon: Github, href: "https://github.com/yeshwanthc", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/yeshwanth-c-a89a3826a", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:yeshwanth3708@gmail.com", label: "Email" }
+              ].map(({ icon: Icon, href, label }) => (
+                <Link key={label} href={href} target="_blank">
+                  <button
+                    className={`p-3 rounded-full transition-all duration-300 transform hover:scale-110 ${
+                      isDarkMode
+                        ? "text-slate-400 hover:text-blue-400 hover:bg-slate-800"
+                        : "text-slate-600 hover:text-blue-600 hover:bg-slate-100"
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="sr-only">{label}</span>
+                  </button>
+                </Link>
+              ))}
+            </div>
+            <p className={`text-lg font-medium ${
               isDarkMode ? "text-slate-300" : "text-slate-700"
             }`}>
               Let's build something amazing together
@@ -245,7 +264,7 @@ export default function EnhancedPortfolio() {
             <p className={`${
               isDarkMode ? "text-slate-500" : "text-slate-500"
             }`}>
-              © 2024 Yeshwanth C. All rights reserved.
+              © {new Date().getFullYear()} Yeshwanth C. All rights reserved.
             </p>
           </div>
         </footer>

@@ -1,11 +1,11 @@
 "use client";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const Roboto = localFont({
-  src: "./fonts/Roboto-Regular.ttf",
-  variable: "--font-roboto",
-  weight: "100 900",
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export default function RootLayout({
@@ -54,7 +54,7 @@ export default function RootLayout({
 
        
       </head>
-      <body className={`${Roboto.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         <div id="smooth-wrapper">
           <div id="smooth-content">{children}</div>
         </div>

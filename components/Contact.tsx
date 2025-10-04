@@ -1,8 +1,8 @@
 "use client"
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Send, MessageCircle, Users, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Send, MessageCircle, Users, Clock, Copy, Check } from "lucide-react";
 import Form from "./Form";
 
 interface ContactProps {
@@ -10,6 +10,19 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
+  const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
+
+  const handleCopy = async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(field);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
   const socialLinks = [
     {
       icon: <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />,
@@ -103,13 +116,19 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
           {stats.map((stat, index) => (
             <Card
               key={index}
-              className={`text-center p-4 sm:p-6 border-0 shadow-xl rounded-2xl ${
+              onMouseEnter={() => setHoveredStat(index)}
+              onMouseLeave={() => setHoveredStat(null)}
+              className={`text-center p-4 sm:p-6 border-0 shadow-xl rounded-2xl cursor-pointer transition-all duration-300 transform ${
+                hoveredStat === index ? 'scale-105 shadow-2xl' : ''
+              } ${
                 isDarkMode
-                  ? "bg-gradient-to-br from-slate-900/80 to-slate-800/60 backdrop-blur-xl"
-                  : "bg-gradient-to-br from-white/90 to-slate-50/70 backdrop-blur-xl"
+                  ? "bg-gradient-to-br from-slate-900/80 to-slate-800/60 backdrop-blur-xl hover:from-slate-900/90 hover:to-slate-800/70"
+                  : "bg-gradient-to-br from-white/90 to-slate-50/70 backdrop-blur-xl hover:from-white to-slate-50/80"
               }`}
             >
-              <div className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white mb-3 sm:mb-4`}>
+              <div className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white mb-3 sm:mb-4 transition-transform duration-300 ${
+                hoveredStat === index ? 'rotate-12 scale-110' : ''
+              }`}>
                 {stat.icon}
               </div>
               <div className={`text-xl sm:text-2xl font-bold mb-1 ${
@@ -164,8 +183,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                 {contactInfo.map((info, index) => (
                   <div key={index} className="group">
                     <div className={`flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-2xl transition-all duration-300 ${
-                      isDarkMode 
-                        ? "hover:bg-slate-800/60 border border-slate-700/30 hover:border-slate-600/50" 
+                      isDarkMode
+                        ? "hover:bg-slate-800/60 border border-slate-700/30 hover:border-slate-600/50"
                         : "hover:bg-slate-50/80 border border-slate-200/40 hover:border-slate-300/60"
                     } backdrop-blur-sm`}>
                       <div className={`p-2 sm:p-3 rounded-2xl bg-gradient-to-r ${info.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
@@ -181,8 +200,8 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                           <a
                             href={info.href}
                             className={`text-sm sm:text-lg font-semibold transition-colors duration-200 block truncate ${
-                              isDarkMode 
-                                ? "text-slate-200 hover:text-blue-400" 
+                              isDarkMode
+                                ? "text-slate-200 hover:text-blue-400"
                                 : "text-slate-800 hover:text-blue-600"
                             }`}
                           >
@@ -201,6 +220,21 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                           {info.description}
                         </p>
                       </div>
+                      <button
+                        onClick={() => handleCopy(info.value, info.label)}
+                        className={`opacity-0 group-hover:opacity-100 transition-all duration-300 p-2 rounded-lg ${
+                          isDarkMode
+                            ? "hover:bg-slate-700/60 text-slate-400 hover:text-blue-400"
+                            : "hover:bg-slate-200/60 text-slate-600 hover:text-blue-600"
+                        }`}
+                        title={`Copy ${info.label}`}
+                      >
+                        {copiedField === info.label ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -242,7 +276,11 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] ${
+                      onMouseEnter={() => setHoveredSocial(index)}
+                      onMouseLeave={() => setHoveredSocial(null)}
+                      className={`group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl transition-all duration-300 transform ${
+                        hoveredSocial === index ? 'scale-[1.05] -translate-y-1' : 'hover:scale-[1.02]'
+                      } ${
                         isDarkMode
                           ? "bg-slate-800/50 hover:bg-slate-700/60 border border-slate-700/30 hover:border-slate-600/50"
                           : "bg-slate-100/60 hover:bg-slate-50/80 border border-slate-200/40 hover:border-slate-300/60"
@@ -252,20 +290,33 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                         isDarkMode
                           ? "bg-slate-700/60 text-slate-300 group-hover:bg-slate-600/60"
                           : "bg-white/80 text-slate-700 group-hover:bg-white"
-                      } ${link.color} shadow-lg group-hover:scale-110`}>
+                      } ${link.color} shadow-lg ${
+                        hoveredSocial === index ? 'scale-125 rotate-12' : 'group-hover:scale-110'
+                      }`}>
                         {link.icon}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className={`font-semibold text-base sm:text-lg ${
+                        <div className={`font-semibold text-base sm:text-lg transition-all duration-300 ${
+                          hoveredSocial === index ? 'translate-x-2' : ''
+                        } ${
                           isDarkMode ? "text-slate-200" : "text-slate-800"
                         }`}>
                           {link.label}
                         </div>
-                        <div className={`text-xs sm:text-sm ${
+                        <div className={`text-xs sm:text-sm transition-all duration-300 ${
+                          hoveredSocial === index ? 'translate-x-2' : ''
+                        } ${
                           isDarkMode ? "text-slate-400" : "text-slate-600"
                         }`}>
                           {link.description}
                         </div>
+                      </div>
+                      <div className={`transition-all duration-300 ${
+                        hoveredSocial === index ? 'translate-x-2 opacity-100' : 'translate-x-0 opacity-0'
+                      }`}>
+                        <Send className={`w-4 h-4 ${
+                          isDarkMode ? "text-slate-400" : "text-slate-600"
+                        }`} />
                       </div>
                     </a>
                   ))}

@@ -10,12 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, ChevronRight, ExternalLink, Github, Star, Sparkles } from "lucide-react";
 import Image from "next/image";
-import SignatureHub from "../app/images/esgenerator.png";
-import DAT from "../app/images/Dutch Aviation Trainers.png";
-import RBD from "../app/images/React Dashboard.png";
-import WebScrapper from "../app/images/webscrapper.png";
-import EZEE from "../app/images/e-zee.png";
-import LumereSpaces from "../app/images/lumerespaces.png";
 
 interface ProjectProps {
   isDarkMode: boolean;
@@ -26,7 +20,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     {
       title: "Email Signature Generator",
       description: "Craft personalized email signatures effortlessly with 40 unique styles. Enhance professionalism, improve communication, and make lasting impressions with customizable designs tailored for any industry.",
-      image: SignatureHub,
+      image: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=800",
       link: "https://esgenerator.netlify.app", 
       github: "https://github.com/yeshwanthc/email-signature-generator",
       tags: ["React.js", "Tailwind CSS", "TypeScript"],
@@ -38,7 +32,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     {
       title: "Web Scrapper",
       description: "Efficiently scrape web data using Cheerio and securely store results in Supabase. Includes user authentication, database management, and seamless data handling for automated web extraction.",
-      image: WebScrapper, 
+      image: "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=800", 
       link: "https://github.com/yeshwanthc/web-scrapper", 
       github: "https://github.com/yeshwanthc/web-scrapper",
       tags: [ "Next.js", "TypeScript","Supabase"],
@@ -50,7 +44,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     {
       title: "Lumière Spaces",
       description: "Designed and developed a sleek, responsive landing page for Lumière Spaces using modern technologies. Ensured fast load times, seamless navigation, and a visually appealing interface to showcase luxury interior designs.",
-      image: LumereSpaces, 
+      image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800", 
       link: "https://lumierespaces.netlify.app", 
       github: "https://github.com/yeshwanthc/lumiere-spaces",
       tags: ["React.js",  "TypeScript", "Tailwind CSS"],
@@ -62,7 +56,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     {
       title: "E-Zee",
       description: "A platform showcasing electric bicycles developed by the brand. E-Zee provides detailed specifications, pricing, and performance insights for each electric cycle, helping users make informed choices.",
-      image: EZEE, 
+      image: "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&w=800", 
       link: "https://www.e-zee.in", 
       github: null,
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
@@ -74,7 +68,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     {
       title: "React Dashboard",
       description: "A functional dashboard to track product sales, website visits, and more.",
-      image: RBD, 
+      image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800", 
       link: "https://reactdashboard14.netlify.app/", 
       github: "https://github.com/yeshwanthc/react-dashboard",
       tags: ["React.js", "Material UI", "TypeScript"],
@@ -86,7 +80,7 @@ const Projects: React.FC<ProjectProps> = ({ isDarkMode }) => {
     {
       title: "Dutch Aviation Trainers",
       description: "Training solutions for aviation professionals based in the Netherlands.",
-      image: DAT, 
+      image: "https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=800", 
       link: "https://dutchaviationtrainers.com", 
       github: null,
       tags: ["HTML", "CSS", "JavaScript", "WordPress"],
